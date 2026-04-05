@@ -1,11 +1,486 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sina Yari Karin | Portfolio</title>
+  <meta name="description" content="Portfolio website for Sina Yari Karin, PhD student and researcher in real-time embedded systems security." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #1a2347;
+      --text: #eaf0ff;
+      --muted: #b9c3e5;
+      --accent: #7aa2ff;
+      --accent-2: #93c5fd;
+      --line: rgba(255,255,255,0.08);
+      --shadow: 0 20px 40px rgba(0,0,0,0.28);
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #09101d 0%, #0b1020 35%, #0d1430 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(9, 16, 29, 0.75);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 2rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(122,162,255,0.12);
+      color: var(--accent-2);
+      font-size: 0.88rem;
+      border: 1px solid rgba(122,162,255,0.24);
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { line-height: 1.2; margin: 0 0 0.8rem; }
+    h1 { font-size: clamp(2rem, 4vw, 3.8rem); }
+    h2 { font-size: clamp(1.4rem, 2.5vw, 2.2rem); }
+    h3 { font-size: 1.1rem; }
+
+    .lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 56rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #5c84ef);
+      border-color: transparent;
+      color: white;
+    }
+
+    .quick-info {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .quick-info-item {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+    }
+
+    .quick-info-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: white;
+    }
+
+    section {
+      padding: 1.2rem 0 2rem;
+    }
+
+    .section-title {
+      margin-bottom: 1.2rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .panel {
+      padding: 1.5rem;
+      background: rgba(18, 25, 51, 0.85);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .chip {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1.25rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.65rem;
+    }
+
+    ul {
+      margin: 0.75rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    li + li { margin-top: 0.45rem; }
+
+    .publication {
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, this is my website</h1>
-  <p>Made with GitHub Pages.</p>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Sina Yari Karin</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="card hero-card">
+        <span class="eyebrow">PhD Student • Embedded Systems Security • Real-Time Systems</span>
+        <h1>Sina Yari Karin</h1>
+        <p class="lead">
+          PhD student in Computer Science at George Mason University, focused on secure scheduling,
+          real-time embedded systems, multicore resource optimization, and mitigation of schedule-based attacks.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="mailto:sinayarikarin@gmail.com">Email Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/sina-yari/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://sinayari.github.io/" target="_blank" rel="noreferrer">GitHub Pages</a>
+        </div>
+      </div>
+
+      <aside class="card quick-info">
+        <div class="quick-info-item">
+          <strong>Location</strong>
+          Fairfax, Virginia, USA
+        </div>
+        <div class="quick-info-item">
+          <strong>Status</strong>
+          Permanent Resident of the USA
+        </div>
+        <div class="quick-info-item">
+          <strong>Expected Graduation</strong>
+          August 2027
+        </div>
+        <div class="quick-info-item">
+          <strong>Research Areas</strong>
+          Real-time embedded systems, scheduling security, multicore optimization
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <div class="section-title">
+        <h2>About</h2>
+      </div>
+      <div class="panel">
+        <p>
+          I work on system-level security and scheduling methods for real-time embedded systems. My research explores
+          security-aware task splitting, priority assignment, run-time delay strategies, DAG-based scheduling,
+          and multicore resource management techniques that reduce information leakage while preserving timing guarantees.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Programming & Tools</h3>
+          <div class="chips">
+            <span class="chip">C/C++</span>
+            <span class="chip">Java</span>
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Bash</span>
+            <span class="chip">MATLAB</span>
+            <span class="chip">Verilog</span>
+            <span class="chip">VHDL</span>
+            <span class="chip">Git</span>
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Simulation & Hardware</h3>
+          <div class="chips">
+            <span class="chip">Quartus</span>
+            <span class="chip">Xilinx</span>
+            <span class="chip">Gem5</span>
+            <span class="chip">McPAT</span>
+            <span class="chip">HotSpot</span>
+            <span class="chip">Design Compiler</span>
+            <span class="chip">Hspice</span>
+            <span class="chip">Pspice</span>
+            <span class="chip">Raspberry Pi</span>
+            <span class="chip">AVR</span>
+            <span class="chip">STM</span>
+            <span class="chip">NXP LPC</span>
+            <span class="chip">DE1 / DE2</span>
+            <span class="chip">Spartan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>George Mason University</h3>
+          <div class="meta">Fairfax, VA • PhD in Computer Science • GPA: 3.8/4.0 • Aug 2022 – Present</div>
+        </div>
+        <div class="timeline-item">
+          <h3>Sharif University of Technology</h3>
+          <div class="meta">Tehran, Iran • M.Sc. in Computer Engineering – Computer Systems Architecture • GPA: 4.0/4.0 • 2018 – 2021</div>
+        </div>
+        <div class="timeline-item">
+          <h3>Ferdowsi University of Mashhad</h3>
+          <div class="meta">Mashhad, Iran • B.Sc. in Computer Engineering – Hardware • 2012 – 2017</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Graduate Research Assistant — George Mason University</h3>
+          <div class="meta">Systems and Networking Group • Fairfax, VA • Aug 2022 – Present</div>
+          <ul>
+            <li>Designed a security-aware task splitting scheduling technique for real-time embedded systems to mitigate anterior schedule-based attacks while preserving schedulability.</li>
+            <li>Developed a secure scheduling framework using optimized priority assignment and run-time delay strategies.</li>
+            <li>Introduced a DAG-based scheduling solution using task ordering and run-time idling heuristics to eliminate anterior and posterior schedule-based attacks.</li>
+            <li>Worked on multicore secure scheduling and resource optimization for efficient and secure real-time performance.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Graduate Teaching Assistant — George Mason University</h3>
+          <div class="meta">Fairfax, VA • Aug 2022 – Present</div>
+          <ul>
+            <li>Program Design and Data Structures (Java)</li>
+            <li>Database Systems</li>
+            <li>Intro Programming (Python)</li>
+            <li>Computer Systems and Programming (C &amp; Assembly)</li>
+            <li>Computer Communications and Networking</li>
+            <li>Software Engineering for Real-Time Embedded Systems</li>
+            <li>Advanced Computer Architecture</li>
+            <li>Computer Systems Architecture</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Graduate Research Assistant — Sharif University of Technology</h3>
+          <div class="meta">Embedded Systems Research Laboratory • Tehran, Iran • 2018 – 2021</div>
+          <ul>
+            <li>Designed energy-, reliability-, thermal-, and aging-aware scheduling methods for embedded systems.</li>
+            <li>Developed and analyzed optimization techniques including DVFS, power budgeting, reinforcement learning-based approaches, and fault-tolerance evaluation.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Graduate Teaching Assistant — Sharif University of Technology</h3>
+          <div class="meta">Tehran, Iran • 2018 – 2021</div>
+          <ul>
+            <li>Fault-Tolerant Systems Design</li>
+            <li>Low Power Design</li>
+            <li>Digital Systems Design</li>
+            <li>Numerical Methods</li>
+            <li>Embedded Systems</li>
+            <li>Real-Time Systems</li>
+            <li>Logical Circuits Laboratory (Instructor)</li>
+            <li>Digital Systems Design Laboratory (Instructor)</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Undergraduate Research Assistant — Ferdowsi University of Mashhad</h3>
+          <div class="meta">Dependable Distributed Embedded Systems Laboratory • Mashhad, Iran • 2014 – 2017</div>
+          <ul>
+            <li>Implemented and evaluated the µC/OS-III scheduler in C on LPC1768 ARM Cortex-M3 hardware.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Honors & Professional Development</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><strong>Student Travel Grant, ACM SIGMETRICS 2025</strong><br><span class="meta">Awarded for accepted research poster on real-time systems security</span></div>
+        <div class="timeline-item"><strong>Certificate in Inclusive Teaching for STEM Graduate Students</strong><br><span class="meta">George Mason University</span></div>
+        <div class="timeline-item"><strong>Top 5 M.Sc. Student</strong><br><span class="meta">Sharif University of Technology • Ranked 5th among 27 students</span></div>
+        <div class="timeline-item"><strong>Top 0.1%, Nationwide M.Sc. Entrance Exam</strong><br><span class="meta">Ranked 30th out of about 30,000 participants</span></div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-title">
+        <h2>Selected Publications</h2>
+      </div>
+      <div class="timeline">
+        <div class="publication">S. Yari Karin, H. Aydin, and D. Zhu, “Task Splitting to Mitigate Schedule-Based Anterior Attacks in Real-Time Embedded Systems,” ISORC, 2026.</div>
+        <div class="publication">S. Yari Karin, H. Aydin, D. Zhu, S. Drager, and M. Anderson, “Impact of Priority Assignment on Schedule-Based Attacks in Real-Time Embedded Systems,” Journal of Systems Architecture, 2023.</div>
+        <div class="publication">S. Yari Karin, R. Siyadatzadeh, M. Ansari, and A. Ejlali, “Passive Primary/Backup-Based Scheduling for Simultaneous Power and Reliability Management on Heterogeneous Embedded Systems,” IEEE Transactions on Sustainable Computing, 2022.</div>
+        <div class="publication">S. Safari, M. Ansari, H. Khdr, P. Gohari-Nazari, S. Yari Karin, A. Yeganeh-Khaksar, S. Hessabi, A. Ejlali, and J. Henkel, “A Survey of Fault-Tolerance Techniques for Embedded Systems from the Perspective of Power, Energy, and Thermal Issues,” IEEE Access, 2022.</div>
+        <div class="publication">M. Ansari, S. Safari, S. Yari Karin, P. Gohari-Nazari, H. Khdr, M. Shafique, J. Henkel, and A. Ejlali, “Thermal-Aware Standby-Sparing Technique on Heterogeneous Real-Time Embedded Systems,” IEEE Transactions on Emerging Topics in Computing, 2021.</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+      </div>
+      <div class="panel">
+        <p><strong>Email:</strong> <a href="mailto:sinayarikarin@gmail.com">sinayarikarin@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+15715308989">(571) 530-8989</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sina-yari/" target="_blank" rel="noreferrer">linkedin.com/in/sina-yari</a></p>
+        <p><strong>Website:</strong> <a href="https://sinayari.github.io/" target="_blank" rel="noreferrer">sinayari.github.io</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Built as a single-file HTML portfolio for GitHub Pages.</div>
+  </footer>
 </body>
 </html>
