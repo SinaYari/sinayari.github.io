@@ -146,6 +146,9 @@
       padding: 1.5rem;
       display: grid;
       gap: 1rem;
+      align-self: stretch;
+      max-height: 420px;
+      overflow-y: auto;
     }
 
     .quick-info-item {
@@ -159,6 +162,39 @@
       display: block;
       margin-bottom: 0.25rem;
       color: white;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .news-entry {
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .news-entry:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .news-text {
+      color: var(--muted);
+      font-size: 0.96rem;
     }
 
     section {
@@ -269,8 +305,8 @@
         <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
           <img src="profile.jpg" alt="Sina Yari Karin" style="width:120px; height:120px; object-fit:cover; border-radius:50%; border:2px solid rgba(255,255,255,0.2);" />
           <div>
-        <h1>Sina Yari Karin</h1>
-        </div>
+            <h1>Sina Yari Karin</h1>
+          </div>
         </div>
         <p class="lead">
           PhD student in Computer Science at George Mason University, focused on the mitigation of schedule-based attacks and secure scheduling,
@@ -284,7 +320,29 @@
         </div>
       </div>
 
-      
+      <aside class="card quick-info">
+        <div class="quick-info-item">
+          <div class="news-title">News</div>
+          <div class="news-list">
+            <div class="news-entry">
+              <div class="news-date">April 2026</div>
+              <div class="news-text">Add your latest update here, such as a new paper, presentation, award, or project milestone.</div>
+            </div>
+            <div class="news-entry">
+              <div class="news-date">March 2026</div>
+              <div class="news-text">Presented ongoing research on schedule-based attacks in real-time embedded systems.</div>
+            </div>
+            <div class="news-entry">
+              <div class="news-date">February 2026</div>
+              <div class="news-text">Updated publication list and portfolio website.</div>
+            </div>
+            <div class="news-entry">
+              <div class="news-date">January 2026</div>
+              <div class="news-text">Started new work on secure scheduling for multicore embedded systems.</div>
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   </header>
 
@@ -295,13 +353,13 @@
       </div>
       <div class="panel">
         <p>
-          I am a Ph.D. student in Computer Science at George Mason University, working with Professor Hakan Aydin. My research focuses on secure and efficient real-time embedded systems, with a particular emphasis on mitigating schedule-based side-channel attacks in safety-critical systems.
+          I am a Ph.D. student in Computer Science at George Mason University, working with Dr. Hakan Aydin. My research focuses on secure and efficient real-time embedded systems, with a particular emphasis on mitigating schedule-based side-channel attacks in safety-critical systems.
         </p>
         <p>
-          My work explores how scheduling decisions in real-time systems can unintentionally leak sensitive information, and how to design security-aware scheduling techniques to prevent such attacks. I have developed methods, including task splitting, priority assignment strategies, run-time delay injection, and DAG-based scheduling, to eliminate different types of schedule-based attacks while preserving system schedulability and performance.
+          My work explores how scheduling decisions in real-time systems can unintentionally leak sensitive information, and how to design security-aware scheduling techniques to prevent such attacks. I have developed methods including task splitting, priority assignment strategies, run-time delay injection, and DAG-based scheduling to eliminate both anterior and posterior schedule-based attacks while preserving system schedulability and performance.
         </p>
         <p>
-          More broadly, I am interested in safety-critical embedded systems, where I design techniques that balance security, timing guarantees, and resource efficiency. My goal is to build systems that are not only high-performance and reliable, but also resilient against emerging system-level attacks.
+          More broadly, I am interested in multicore and heterogeneous embedded systems, where I design techniques that balance security, timing guarantees, and resource efficiency. My goal is to build systems that are not only high-performance and reliable, but also resilient against emerging system-level attacks.
         </p>
       </div>
     </section>
@@ -348,7 +406,7 @@
       </div>
     </section>
 
-   <section id="education">
+    <section id="education">
       <div class="section-title">
         <h2>Education</h2>
       </div>
@@ -359,7 +417,7 @@
           <div class="meta">
             <strong>George Mason University</strong>, Fairfax, VA, USA  
             <br>
-            2022 – Present
+            Aug 2022 – Present (Expected Aug 2027)
           </div>
         </div>
 
@@ -383,6 +441,7 @@
 
       </div>
     </section>
+
     <section id="experience">
       <div class="section-title">
         <h2>Experience</h2>
@@ -390,7 +449,7 @@
       <div class="timeline">
         <div class="timeline-item">
           <h3>Graduate Research Assistant — George Mason University</h3>
-          <div class="meta">Systems and Networking Group (2022 – Present)</div>
+          <div class="meta">Systems and Networking Group • Fairfax, VA • Aug 2022 – Present</div>
           <ul>
             <li>Designed a security-aware task splitting scheduling technique for real-time embedded systems to mitigate anterior schedule-based attacks while preserving schedulability.</li>
             <li>Developed a secure scheduling framework using optimized priority assignment and run-time delay strategies.</li>
@@ -401,7 +460,7 @@
 
         <div class="timeline-item">
           <h3>Graduate Teaching Assistant — George Mason University</h3>
-          <div class="meta">Department of Computer Science (2022 – Present)</div>
+          <div class="meta">Fairfax, VA • Aug 2022 – Present</div>
           <ul>
             <li>Program Design and Data Structures (Java)</li>
             <li>Database Systems</li>
@@ -416,16 +475,16 @@
 
         <div class="timeline-item">
           <h3>Graduate Research Assistant — Sharif University of Technology</h3>
-          <div class="meta">Embedded Systems Research Laboratory (2018 – 2021)</div>
+          <div class="meta">Embedded Systems Research Laboratory • Tehran, Iran • 2018 – 2021</div>
           <ul>
             <li>Designed energy-, reliability-, thermal-, and aging-aware scheduling methods for embedded systems.</li>
-            <li>Developed and analyzed optimization techniques, including DVFS, power budgeting, reinforcement learning-based approaches, and fault-tolerance evaluation.</li>
+            <li>Developed and analyzed optimization techniques including DVFS, power budgeting, reinforcement learning-based approaches, and fault-tolerance evaluation.</li>
           </ul>
         </div>
 
         <div class="timeline-item">
           <h3>Graduate Teaching Assistant — Sharif University of Technology</h3>
-          <div class="meta">Department of Computer Engineering (2018 – 2021)</div>
+          <div class="meta">Tehran, Iran • 2018 – 2021</div>
           <ul>
             <li>Fault-Tolerant Systems Design</li>
             <li>Low Power Design</li>
@@ -440,21 +499,12 @@
 
         <div class="timeline-item">
           <h3>Undergraduate Research Assistant — Ferdowsi University of Mashhad</h3>
-          <div class="meta">Dependable Distributed Embedded Systems Laboratory (2014 – 2017)</div>
+          <div class="meta">Dependable Distributed Embedded Systems Laboratory • Mashhad, Iran • 2014 – 2017</div>
           <ul>
             <li>Implemented and evaluated the µC/OS-III scheduler in C on LPC1768 ARM Cortex-M3 hardware.</li>
           </ul>
         </div>
       </div>
-      <div class="timeline-item">
-          <h3>Undergraduate Teaching Assistant — Ferdowsi University of Mashhad</h3>
-          <div class="meta">Department of Engineering (2014 – 2017  )</div>
-          <ul>
-            <li>Logical Circuits</li>
-            <li>Machine and Assembly Languages</li>
-            <li>Computer Architecture</li>
-          </ul>
-        </div>
     </section>
 
     <section>
@@ -474,15 +524,11 @@
         <h2>Selected Publications</h2>
       </div>
       <div class="timeline">
-        <div class="publication">S. Yari Karin, H. Aydin, and D. Zhu, “Task Splitting to Mitigate Schedule-Based Anterior Attacks in Real-Time Embedded Systems,” 29th International Symposium on Real-Time Distributed Systems (ISORC), 2026.</div>
+        <div class="publication">S. Yari Karin, H. Aydin, and D. Zhu, “Task Splitting to Mitigate Schedule-Based Anterior Attacks in Real-Time Embedded Systems,” ISORC, 2026.</div>
         <div class="publication">S. Yari Karin, H. Aydin, D. Zhu, S. Drager, and M. Anderson, “Impact of Priority Assignment on Schedule-Based Attacks in Real-Time Embedded Systems,” Journal of Systems Architecture, 2023.</div>
         <div class="publication">S. Yari Karin, R. Siyadatzadeh, M. Ansari, and A. Ejlali, “Passive Primary/Backup-Based Scheduling for Simultaneous Power and Reliability Management on Heterogeneous Embedded Systems,” IEEE Transactions on Sustainable Computing, 2022.</div>
         <div class="publication">S. Safari, M. Ansari, H. Khdr, P. Gohari-Nazari, S. Yari Karin, A. Yeganeh-Khaksar, S. Hessabi, A. Ejlali, and J. Henkel, “A Survey of Fault-Tolerance Techniques for Embedded Systems from the Perspective of Power, Energy, and Thermal Issues,” IEEE Access, 2022.</div>
         <div class="publication">M. Ansari, S. Safari, S. Yari Karin, P. Gohari-Nazari, H. Khdr, M. Shafique, J. Henkel, and A. Ejlali, “Thermal-Aware Standby-Sparing Technique on Heterogeneous Real-Time Embedded Systems,” IEEE Transactions on Emerging Topics in Computing, 2021.</div>
-        <div class="publication">M. Ansari, S. Yari Karin, S. Safari, and A. Ejlali, “Power Management to Meet Thermal Safe Power in Fault-Tolerant Embedded Systems,” TechRxiv, 2021</div>
-        <div class="publication">A. Yeganeh-Khaksar, M. Ansari, S. Safari, S. Yari Karin, and A. Ejlali, “Ring-DVFS: Reliability-Aware Reinforcement Learning-Based DVFS for Real-Time Embedded Systems,” IEEE Embedded Systems Letters, 2021</div>
-        <div class="publication">J. Saber-Latibari, M. Ansari, P. Gohari-Nazari, S. Yari Karin, A. M. H. Monazzah, and A. Ejlali, “READY: Reliability and Deadline-Aware Power-Budgeting for Heterogeneous Multicore Systems,” IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, 2021.</div>
-        <div class="publication">S. Yari Karin, A. Sahraee, J. Saber-Latibari, M. Ansari, N. Rohbani, and A. Ejlali, “A Comparative Study of Joint Power and Reliability Management Techniques in Multicore Embedded Systems,” CSI/CPSSI International Symposium on Real-Time and Embedded Systems and Technologies (RTEST), 2020.</div>
       </div>
     </section>
 
@@ -492,12 +538,15 @@
       </div>
       <div class="panel">
         <p><strong>Email:</strong> <a href="mailto:sinayarikarin@gmail.com">sinayarikarin@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+15715308989">(571) 530-8989</a></p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sina-yari/" target="_blank" rel="noreferrer">linkedin.com/in/sina-yari</a></p>
+        <p><strong>Website:</strong> <a href="https://sinayari.github.io/" target="_blank" rel="noreferrer">sinayari.github.io</a></p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
+    <div class="container">Built as a single-file HTML portfolio for GitHub Pages.</div>
   </footer>
 </body>
 </html>
