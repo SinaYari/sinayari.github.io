@@ -7,53 +7,69 @@
   <meta name="description" content=" Personal website for Sina Yari Karin, PhD student and researcher in real-time embedded systems security." />
   <style>
     :root {
-  /* Base */
-  --bg: #0a0f1c;
-  --bg-soft: #0d1426;
+      /* Base */
+      --bg: #0a0f1c;
+      --bg-soft: #0d1426;
 
-  --panel: #121a2b;
-  --panel-2: #18233f;
-  --panel-hover: #1f2b4d;
+      --panel: #121a2b;
+      --panel-2: #18233f;
+      --panel-hover: #1f2b4d;
 
-  /* Text */
-  --text: #ffffff;
-  --muted: #c7d2fe;
-  --subtle: #94a3b8;
+      /* Text */
+      --text: #ffffff;
+      --muted: #c7d2fe;
+      --subtle: #94a3b8;
 
-  /* Primary Accent (Blue) */
-  --accent: #4f8cff;
-  --accent-2: #60a5fa;
+      /* Primary Accent (Blue) */
+      --accent: #4f8cff;
+      --accent-2: #60a5fa;
 
-  /* Secondary Accent (Purple – for highlights) */
-  --accent-purple: #a78bfa;
+      /* Secondary Accent (Purple – for highlights) */
+      --accent-purple: #a78bfa;
 
-  /* Tertiary Accent (Cyan – for links / hover) */
-  --accent-cyan: #22d3ee;
+      /* Tertiary Accent (Cyan – for links / hover) */
+      --accent-cyan: #22d3ee;
 
-  /* Success / highlight (optional use) */
-  --accent-green: #34d399;
+      /* Success / highlight (optional use) */
+      --accent-green: #34d399;
 
-  /* Borders & shadows */
-  --line: rgba(255,255,255,0.12);
-  --line-strong: rgba(255,255,255,0.2);
+      /* Borders & shadows */
+      --line: rgba(255,255,255,0.12);
+      --line-strong: rgba(255,255,255,0.2);
 
-  --shadow: 0 20px 40px rgba(0,0,0,0.35);
+      --shadow: 0 20px 40px rgba(0,0,0,0.35);
 
-  --max: 1120px;
-}
+      --max: 1120px;
+    }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: linear-gradient(180deg, #09101d 0%, #0b1020 35%, #0d1430 100%);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    a { color: var(--accent-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-cyan);
+    }
 
     .container {
       width: min(var(--max), calc(100% - 2rem));
@@ -91,7 +107,7 @@
     }
 
     .hero {
-      padding: 5rem 0 3rem;
+      padding: 4rem 0 2rem;
     }
 
     .hero-grid {
@@ -102,7 +118,7 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
       border: 1px solid var(--line);
       border-radius: 24px;
       box-shadow: var(--shadow);
@@ -123,10 +139,23 @@
       margin-bottom: 1rem;
     }
 
-    h1, h2, h3 { line-height: 1.2; margin: 0 0 0.8rem; }
-    h1 { font-size: clamp(2rem, 4vw, 3.8rem); }
-    h2 { font-size: clamp(1.4rem, 2.5vw, 2.2rem); }
-    h3 { font-size: 1.1rem; }
+    h1, h2, h3 {
+      line-height: 1.2;
+      margin: 0 0 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      color: var(--accent-purple);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
 
     .lead {
       font-size: 1.05rem;
@@ -157,6 +186,7 @@
     .btn:hover {
       transform: translateY(-1px);
       text-decoration: none;
+      background: var(--panel-hover);
     }
 
     .btn.primary {
@@ -209,7 +239,7 @@
     }
 
     .news-date {
-      color: var(--accent-2);
+      color: var(--accent-green);
       font-size: 0.9rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
@@ -250,8 +280,8 @@
     .chip {
       padding: 0.55rem 0.8rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--line);
+      background: rgba(79,140,255,0.08);
+      border: 1px solid rgba(79,140,255,0.2);
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -279,7 +309,9 @@
       padding-left: 1.1rem;
     }
 
-    li + li { margin-top: 0.45rem; }
+    li + li {
+      margin-top: 0.45rem;
+    }
 
     .publication {
       padding: 1rem 1.1rem;
@@ -295,14 +327,163 @@
     }
 
     @media (max-width: 900px) {
-      .hero-grid,
-      .grid-2 {
-        grid-template-columns: 1fr;
+      html, body {
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 1rem));
+      }
+
+      .nav {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(9, 16, 29, 0.96);
       }
 
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.7rem;
+        padding: 0.75rem 0;
+      }
+
+      .brand {
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 0.85rem;
+        padding-bottom: 0.2rem;
+        font-size: 0.92rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 1.5rem 0 1rem;
+      }
+
+      .hero-grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .card,
+      .panel,
+      .timeline-item,
+      .publication {
+        border-radius: 16px;
+      }
+
+      .hero-card {
+        padding: 1.25rem;
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 8vw, 2.6rem);
+        line-height: 1.15;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      .lead {
+        font-size: 0.98rem;
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-top: 1.1rem;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        border-radius: 12px;
+      }
+
+      .quick-info {
+        padding: 1rem;
+        max-height: none;
+        overflow: visible;
+      }
+
+      .quick-info-item {
+        padding: 0.9rem;
+        border-radius: 14px;
+      }
+
+      .news-title {
+        font-size: 1.08rem;
+      }
+
+      .news-text,
+      .news-date,
+      .meta,
+      li,
+      .publication {
+        font-size: 0.94rem;
+      }
+
+      section {
+        padding: 0.9rem 0 1.3rem;
+      }
+
+      .section-title {
+        margin-bottom: 0.9rem;
+      }
+
+      .panel {
+        padding: 1rem;
+      }
+
+      .chips {
+        gap: 0.5rem;
+      }
+
+      .chip {
+        padding: 0.5rem 0.72rem;
+        font-size: 0.88rem;
+      }
+
+      .timeline {
+        gap: 0.8rem;
+      }
+
+      .timeline-item {
+        padding: 1rem;
+      }
+
+      ul {
+        padding-left: 1rem;
+      }
+
+      img[alt="Sina Yari Karin"] {
+        width: 88px !important;
+        height: 88px !important;
       }
     }
   </style>
@@ -351,7 +532,7 @@
               <div class="news-date">March 2026</div>
               <div class="news-text">Paper accepted at ISORC 2026.</div>
             </div>
-             <div class="news-entry">
+            <div class="news-entry">
               <div class="news-date">May 2025</div>
               <div class="news-text">Recipient of the ACM SIGMETRICS 2025 student travel grant.</div>
             </div>
@@ -378,13 +559,13 @@
   </header>
 
   <main class="container">
-   <section id="about">
+    <section id="about">
       <div class="section-title">
         <h2>About</h2>
       </div>
       <div class="panel">
         <p>
-      I am a Ph.D. student in Computer Science at George Mason University, working under the supervision of Professor Hakan Aydin. My research focuses on secure and efficient real-time embedded systems, with an emphasis on mitigating schedule-based side-channel attacks and developing security-aware scheduling techniques for safety-critical applications. I address a key challenge in modern embedded systems by analyzing how scheduling decisions can unintentionally leak sensitive information. I design and implement practical, system-level defenses, including task splitting, priority assignment, and run-time delay injection to eliminate vulnerabilities while maintaining real-time guarantees and performance. My work combines system programming, algorithm design, and performance optimization, with a strong focus on building solutions that are both theoretically sound and deployable in real-world environments. Beyond research, I am continuously expanding my expertise in software engineering, system design, and scalable systems, with interests in embedded systems, distributed systems, and performance-critical software systems. I am particularly interested in applying my skills to develop robust, secure systems. I am actively seeking opportunities where I can contribute to building secure, high-performance systems while continuing to learn and grow in industry environments.
+          I am a Ph.D. student in Computer Science at George Mason University, working under the supervision of Professor Hakan Aydin. My research focuses on secure and efficient real-time embedded systems, with an emphasis on mitigating schedule-based side-channel attacks and developing security-aware scheduling techniques for safety-critical applications. I address a key challenge in modern embedded systems by analyzing how scheduling decisions can unintentionally leak sensitive information. I design and implement practical, system-level defenses, including task splitting, priority assignment, and run-time delay injection to eliminate vulnerabilities while maintaining real-time guarantees and performance. My work combines system programming, algorithm design, and performance optimization, with a strong focus on building solutions that are both theoretically sound and deployable in real-world environments. Beyond research, I am continuously expanding my expertise in software engineering, system design, and scalable systems, with interests in embedded systems, distributed systems, and performance-critical software systems. I am particularly interested in applying my skills to develop robust, secure systems. I am actively seeking opportunities where I can contribute to building secure, high-performance systems while continuing to learn and grow in industry environments.
         </p>
       </div>
     </section>
@@ -440,7 +621,7 @@
         <div class="timeline-item" style="margin-bottom:1rem;">
           <h3>Ph.D. in Computer Science</h3>
           <div class="meta">
-            <strong>George Mason University</strong>, Fairfax, VA, USA  
+            <strong>George Mason University</strong>, Fairfax, VA, USA
             <br>
             2022 – Present
           </div>
@@ -449,7 +630,7 @@
         <div class="timeline-item" style="margin-bottom:1rem;">
           <h3>M.Sc. in Computer Engineering (Computer Systems Architecture)</h3>
           <div class="meta">
-            <strong>Sharif University of Technology</strong>, Tehran, Iran  
+            <strong>Sharif University of Technology</strong>, Tehran, Iran
             <br>
             2018 – 2021
           </div>
@@ -458,7 +639,7 @@
         <div class="timeline-item">
           <h3>B.Sc. in Computer Engineering (Hardware)</h3>
           <div class="meta">
-            <strong>Ferdowsi University of Mashhad</strong>, Mashhad, Iran  
+            <strong>Ferdowsi University of Mashhad</strong>, Mashhad, Iran
             <br>
             2012 – 2017
           </div>
@@ -467,7 +648,7 @@
       </div>
     </section>
 
-   <section id="experience">
+    <section id="experience">
       <div class="section-title">
         <h2>Experience</h2>
       </div>
@@ -479,7 +660,7 @@
             <li>Designed a security-aware task splitting scheduling technique for real-time embedded systems to mitigate anterior schedule-based attacks while preserving schedulability.</li>
             <li>Developed a secure scheduling framework using optimized priority assignment and run-time delay strategies.</li>
             <li>Introduced a DAG-based scheduling solution using task ordering and run-time idling heuristics to eliminate anterior and posterior schedule-based attacks.</li>
-            <li> Working on multicore secure scheduling and resource optimization for providing efficient and secure real-time systems.</li>
+            <li>Working on multicore secure scheduling and resource optimization for providing efficient and secure real-time systems.</li>
           </ul>
         </div>
 
@@ -529,19 +710,20 @@
             <li>Implemented and evaluated the µC/OS-III scheduler in C on LPC1768 ARM Cortex-M3 hardware.</li>
           </ul>
         </div>
-    
-      <div class="timeline-item">
+
+        <div class="timeline-item">
           <h3>Undergraduate Teaching Assistant — Ferdowsi University of Mashhad</h3>
-          <div class="meta">Department of Engineering (2014 – 2017  )</div>
+          <div class="meta">Department of Engineering (2014 – 2017)</div>
           <ul>
             <li>Logical Circuits</li>
             <li>Machine and Assembly Languages</li>
             <li>Computer Architecture</li>
           </ul>
         </div>
+      </div>
     </section>
 
-    <section id ="honors">
+    <section id="honors">
       <div class="section-title">
         <h2>Honors & Awards</h2>
       </div>
@@ -552,7 +734,7 @@
         <div class="timeline-item"><strong>Top 0.1%, Nationwide M.Sc. Entrance Exam</strong><br><span class="meta">Ranked 30th out of about 30,000 participants</span></div>
       </div>
     </section>
-    
+
     <section id="publications">
       <div class="section-title">
         <h2>Publications</h2>
