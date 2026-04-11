@@ -428,7 +428,7 @@
       .quick-info {
         padding: 1rem;
         max-height: none;
-        overflow: visible;
+        overflow: hidden;
       }
 
       .quick-info-item {
@@ -438,6 +438,16 @@
 
       .news-title {
         font-size: 1.08rem;
+      }
+
+      .news-list {
+        display: grid;
+        gap: 0.9rem;
+        max-height: 260px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 0.25rem;
       }
 
       .news-text,
