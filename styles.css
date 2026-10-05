@@ -68,7 +68,15 @@ h3 { margin: 0; line-height: 1.35; }
 .experience-item ul { margin: 7px 0 0; padding-left: 18px; color: var(--muted); font-size: .79rem; }
 .experience-item li + li { margin-top: 4px; }
 
-.publication-list { margin: 17px 0 0; padding-left: 25px; }
+.publication-list {
+  margin: 17px 0 0;
+  max-height: 300px; 
+  overflow-y: auto;
+}
+
+.publication-list ol {
+  padding-left: 25px;
+}
 .publication-list li { padding: 8px 8px; color: #4d596b; font-size: .75rem; border-top: 1px solid var(--line); }
 .publication-list li::marker { color: var(--accent); font-family: "JetBrains Mono", monospace; }
 .publication-list strong { color: var(--text); }
